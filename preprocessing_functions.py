@@ -1,7 +1,7 @@
 import nltk
 words = set(nltk.corpus.words.words())
 import re 
-
+nltk.download('words')
 def clean_text_html(text):
   Tag_re=re.compile(r'<[^>]+>')
   text=Tag_re.sub('', text)
