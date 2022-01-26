@@ -1,5 +1,4 @@
 from flask import Flask,render_template,request
-from preprocessing_functions import clean_text_html,clean_meaningless
 import pandas as pd 
 df=pd.read_csv('subject-question-final.csv',encoding='latin-1')
 df=df.dropna()
@@ -27,8 +26,7 @@ def home():
 def predict():
     if request.method=='POST':
         question=request.form['question']
-        question=clean_text_html(question)
-        question=clean_meaningless(question)
+
         question=model.predict([question])
         return render_template('result.html',prediction_text=question)
 
